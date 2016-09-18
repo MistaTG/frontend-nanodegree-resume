@@ -49,11 +49,14 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     <div id="workExperience" class="gray">
       <h2>Work Experience</h2>
     </div>
-    <div id="projects">
+    <div id="projects" class="gray">
       <h2>Projects</h2>
     </div>
     <div id="education" class="gray">
       <h2>Education</h2>
+    </div>
+    <div id="onlineEd" class="gray">
+      <h2>Online Education</h2>
     </div>
     <div id="mapDiv">
       <h2>Where I've Lived and Worked</h2>
@@ -133,7 +136,10 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       document.getElementById('projects').style.display = 'none';
     }
     if(document.getElementsByClassName('education-entry').length === 0) {
-      document.getElementById('education').style.display = 'none';
+      document.getElementsById('education').style.display = 'none';
+    }
+    if(document.getElementsByClassName('onlineEd-entry').length === 0) {
+      document.getElementsById('onlineEd').style.display = 'none';
     }
     if(document.getElementsByClassName('flex-item').length === 0) {
       document.getElementById('lets-connect').style.display = 'none';
