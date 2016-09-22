@@ -143,7 +143,8 @@ a {
 }
 
 .flex-column {
-  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
   flex-direction: column;
   flex-wrap: nowrap;
   padding: 10px;
