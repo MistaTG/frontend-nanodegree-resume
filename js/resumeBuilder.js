@@ -123,7 +123,7 @@ console.log(workLocation);
 
 function displaywork() {
 
-for(job in work.prevjobs){
+for(job=0,x=work.prevjobs.length;job<x;job++){
 	$("#workExperience").append(HTMLworkStart);
 	var formWorkEmp = HTMLworkEmployer.replace("%data%", work.prevjobs[job].employer);
 	var formWorkTitle = HTMLworkTitle.replace("%data%", work.prevjobs[job].title);
@@ -195,7 +195,7 @@ projects.display = function(projects_obj) {
 
 	$("#projects").append(HTMLprojectStart);
 
-	for(proj in projects_obj.project) {
+	for(proj=0,x=projects_obj.project.length;proj<x;proj++) {
 		var projectTitle = HTMLprojectTitle.replace("%data%", projects_obj.project[proj].title);
 		var projectDates = HTMLprojectDates.replace("%data%", projects_obj.project[proj].dates);
 		var projectDesc = HTMLprojectDescription.replace("%data%", projects_obj.project[proj].desc);
@@ -266,7 +266,7 @@ education.display = function(education_obj) {
 
 	$("#education").append(HTMLschoolStart);
 
-	for(edu in education_obj.schools) {
+	for(edu=0,x=education_obj.schools.length;edu<x;edu++) {
 		var schoolName = HTMLschoolName.replace("%data%", education_obj.schools[edu].school);
 		var schooLDates = HTMLschoolDates.replace("%data%", education_obj.schools[edu].dates);
 		var schoolLocation = HTMLschoolLocation.replace("%data%", education_obj.schools[edu].location);				var schoolLocation = HTMLschoolLocation.replace("%data%", education_obj.schools[edu].location);
@@ -282,7 +282,7 @@ education.display = function(education_obj) {
 
 education.display(education);
 
-// $("#mapDiv").append(googleMap);
+$("#map-div").append(googleMap);
 
 // var schoolName = HTMLschoolName.replace("%data%", education.schools.school);
 // var schoolDegree = HTMLschoolDegree.replace("%data%", education.schools.eduactionachieved);
