@@ -16,9 +16,11 @@
 var bio = {
 	"name" : "Austin Nazareth",
 	"role" : "Front-End Web Dev",
-	"contactInfo" : {
+	"contacts" : {
 		"email" : "nazanator@hotmail.com",
-		"mobile" : "403-919-9187"
+		"mobile" : "403-919-9187",
+		"location" : "Calgary, Alberta",
+		"github" : "MistaTg"
 	},
 	"welcomeMsg" : "Hello World",
 	"skills" : ["Programming ", "Forward Thinking ", "Team Oriented "],
@@ -31,9 +33,16 @@ if (bio.skills.length > 0) {
 	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
 	var formattedProPic = HTMLbioPic.replace("%data%", bio.propic);
 	var formskills = HTMLskills.replace("%data%", bio.skills[0]);
+	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.mobile);
+	var formattedLoc = HTMLlocation.replace("%data%", bio.contacts.location);
+	var formattedGit = HTMLgithub.replace("%data%", bio.contacts.github);	
 	var bioForm = formattedName + formattedRole + formattedWelcomeMsg + formattedProPic;
+	var contactForm = formattedMobile + formattedEmail + formattedLoc + formattedGit;
 
-	$("#header:last").append(bioForm);
+	$("#header").append(bioForm);
+	$("#topContacts").append(contactForm);
+	// $("#header").append(formattedMobile);
 	// $("#header").append(formattedName);
 	// $("#header").append(formattedRole);
 	// $("#header").append(formattedProPic);
@@ -94,7 +103,7 @@ function inName() {
 // };
 
 var work = {
-  "prevjobs": [
+  "jobs": [
     {
       "employer": "Calgary Stampede F&B",
       "title": "Wait Staff",
@@ -118,18 +127,18 @@ var work = {
 // 	"Calgary, Alberta",
 // 	"Worked for the Calgary Stampede Food & Beverage department."
 // ];
-var workLocation = work.prevjobs[0].location;
+var workLocation = work.jobs[0].location;
 console.log(workLocation);
 
 function displaywork() {
 
-for(job=0,x=work.prevjobs.length;job<x;job++){
+for(job=0,x=work.jobs.length;job<x;job++){
 	$("#workExperience").append(HTMLworkStart);
-	var formWorkEmp = HTMLworkEmployer.replace("%data%", work.prevjobs[job].employer);
-	var formWorkTitle = HTMLworkTitle.replace("%data%", work.prevjobs[job].title);
-	var formWorkLoc = HTMLworkLocation.replace("%data%", work.prevjobs[job].location);
-	var formWorkDates = HTMLworkDates.replace("%data%", work.prevjobs[job].dates);
-	var formWorkDesc = HTMLworkDescription.replace("%data%", work.prevjobs[job].description);
+	var formWorkEmp = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var formWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+	var formWorkLoc = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+	var formWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+	var formWorkDesc = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 	var formWork = formWorkEmp + formWorkTitle + formWorkDates + formWorkLoc + formWorkDesc;
 
 	$(".work-entry:last").append(formWork);
@@ -249,14 +258,14 @@ var education = {
 	{
 		"school" : "Bishop O'Byrne",
 		"dates" : "2010 - 2013",
-		"location" : "Calgary, Alberta",
+		"locations" : "Calgary, Alberta",
 		"eduactionachieved" : "High School Diploma",
 		"url" : "https://www.cssd.ab.ca/schools/bishopobyrne"
 	},
 	{
 		"school" : "Udacity",
 		"dates" : "August, 2016 - Current",
-		"location" : "Calgary, Alberta",
+		"locations" : "Calgary, Alberta",
 		"eduactionachieved" : "Front End Web Developer",
 		"url" : "https://www.udacity.com"
 	}]
@@ -269,20 +278,18 @@ education.display = function(education_obj) {
 	for(edu=0,x=education_obj.schools.length;edu<x;edu++) {
 		var schoolName = HTMLschoolName.replace("%data%", education_obj.schools[edu].school);
 		var schooLDates = HTMLschoolDates.replace("%data%", education_obj.schools[edu].dates);
-		var schoolLocation = HTMLschoolLocation.replace("%data%", education_obj.schools[edu].location);				var schoolLocation = HTMLschoolLocation.replace("%data%", education_obj.schools[edu].location);
+		var schoolLoc = HTMLschoolLocation.replace("%data%", education_obj.schools[edu].locations);				var schoolLocation = HTMLschoolLocation.replace("%data%", education_obj.schools[edu].location);
 		var schoolDegree = HTMLschoolDegree.replace("%data%", education_obj.schools[edu].eduactionachieved);
 		var schoolUrl = HTMLonlineURL.replace("%data%", education_obj.schools[edu].url);
 		// var schoolForm = schoolName + schoolDegree + schooLDates + schoolLocation + schoolUrl;
-		var schoolForm = schoolLocation + schoolDegree + schooLDates + schoolUrl;
-
+		var schoolForm = schoolLoc + schoolDegree + schooLDates + schoolUrl;
 
 		$(".education-entry:last").append(schoolName).append(schoolForm);
 	}
 }
 
 education.display(education);
-
-$("#map-div").append(googleMap);
+$("#mapDiv").append(googleMap);
 
 // var schoolName = HTMLschoolName.replace("%data%", education.schools.school);
 // var schoolDegree = HTMLschoolDegree.replace("%data%", education.schools.eduactionachieved);

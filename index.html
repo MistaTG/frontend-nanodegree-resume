@@ -30,12 +30,14 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <!--
   Uncomment the <script> tag below when you're ready to add an interactive Google Map to your resume!
   -->
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM_Avsnapvjcavbxmx7a-3kbo0hIdbVmg&callback=initMap"</script> -->
+<script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
   <div id="main">
+       <!-- You'll be deleting this line in the course -->
+
     <!--
     Everything from here to the <script> tag below is the skeleton of your
     website. Your code will add information to each of the sections of the
@@ -55,10 +57,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     <div id="education" class="gray">
       <h2>Education</h2>
     </div>
-    <div id="onlineEd" class="gray">
-      <h2>Online Education</h2>
-    </div>
-    <div id="map-div">
+    <div id="mapDiv">
       <h2>Where I've Lived and Worked</h2>
     </div>
     <div id="lets-connect" class="dark-gray">
@@ -137,9 +136,6 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     }
     if(document.getElementsByClassName('education-entry').length === 0) {
       document.getElementById('education').style.display = 'none';
-    }
-    if(document.getElementsByClassName('onlineEd-entry').length === 0) {
-      document.getElementById('onlineEd').style.display = 'none';
     }
     if(document.getElementsByClassName('flex-item').length === 0) {
       document.getElementById('lets-connect').style.display = 'none';
