@@ -16,7 +16,7 @@ bio.display = function(bio_obj, skills_obj) {
 
 	for (bios=0,x=1;bios<x;bios++) {
 		var formattedMobile = HTMLmobile.replace("%data%", bio_obj.contacts.mobile);
-		var formattedEmail = HTMLemail.replace("%data%", bio_obj.contacts.mobile);
+		var formattedEmail = HTMLemail.replace("%data%", bio_obj.contacts.email);
 		var formattedGit = HTMLgithub.replace("%data%", bio_obj.contacts.github);
 		var formattedLoc = HTMLlocation.replace("%data%", bio_obj.contacts.location);
 		var formattedName = HTMLheaderName.replace("%data%", bio_obj.name);
@@ -95,7 +95,36 @@ education.display = function (education_obj) {
 		var onlineForm = onlineTitle + onlineDates + onlineUrl;
 
 		$(".onlineEd-entry:last").append(onlineSchool).append(onlineForm);
-	}
+	};
 };
 
 education.display(education);
+
+var work = {
+	"jobs" : [
+	{
+		"employer" : "Employer 1",
+		"title" : "Generic Job",
+		"location" : "Calgary, AB",
+		"dates" : "2020-2022",
+		"description" : "A generic job for a placeholder"
+	}]
+};
+
+work.display = function(work_obj) {
+
+	$("#workExperience").append(HTMLworkStart);
+
+	for (job=0,x=work_obj.jobs.length;job<x;job++) {
+		var workEmployer = HTMLworkEmployer.replace("%data%", work_obj.jobs[job].employer);
+		var workTitle = HTMLworkTitle.replace("%data%", work_obj.jobs[job].title);
+		var workLocation = HTMLworkLocation.replace("%data%", work_obj.jobs[job].location);
+		var workDates = HTMLworkDates.replace("%data%", work_obj.jobs[job].dates);
+		var workDescription = HTMLworkDescription.replace("%data%", work_obj.jobs[job].description);
+		var workForm = workEmployer + workTitle + workLocation + workDates + workDescription;
+
+		$(".work-entry:last").append(workForm);
+	};
+};
+
+work.display(work);
