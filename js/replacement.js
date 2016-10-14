@@ -167,3 +167,5 @@ projects.display = function(projects_obj) {
 };
 
 projects.display(projects);
+
+$("#mapDiv").append(googleMap);
