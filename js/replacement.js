@@ -128,3 +128,42 @@ work.display = function(work_obj) {
 };
 
 work.display(work);
+
+var projects = {
+	"project" : [ 
+	{
+		"title" : "Mock up Site",
+		"dates" : "September 2016",
+		"description" : "A reactive and responsive mock up website",
+		"images" : "http://placehold.it/300x200"
+	},
+	{
+		"title" : "vacation home webssite",
+		"dates" : "TBD",
+		"description" : "A website that shows you the availability of condos",
+		"images" : ""
+	},
+	{
+		"title" : "Resume Website",
+		"dates" : "September 2016",
+		"description" : "An online resume built mostly with Javascript",
+		"images" : ""
+	} ]
+}
+
+projects.display = function(projects_obj) {
+
+	$("#projects").append(HTMLprojectStart);
+
+	for (proj=0,x=projects_obj.project.length;proj<x;proj++) {
+		var projectTitle = HTMLprojectTitle.replace("%data%", projects_obj.project[proj].title);
+		var projectDates = HTMLprojectDates.replace("%data%", projects_obj.project[proj].dates);
+		var projectDescription = HTMLprojectDescription.replace("%data%", projects_obj.project[proj].description);
+		var projectImages = HTMLprojectImage.replace("%data%", projects_obj.project[proj].images);
+		var projectForm = projectTitle + projectDates + projectDescription + projectImages;
+
+		$(".project-entry:last").append(projectForm);
+	};
+};
+
+projects.display(projects);
