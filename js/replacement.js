@@ -12,9 +12,9 @@ var bio = {
 	"propic" : "images/fry.jpg"
 };
 
-bio.display = function(bio_obj, skills_obj){
+bio.display = function(bio_obj, skills_obj) {
 
-	for (bios=0,x=1;bios<x;bios++){
+	for (bios=0,x=1;bios<x;bios++) {
 		var formattedMobile = HTMLmobile.replace("%data%", bio_obj.contacts.mobile);
 		var formattedEmail = HTMLemail.replace("%data%", bio_obj.contacts.mobile);
 		var formattedGit = HTMLgithub.replace("%data%", bio_obj.contacts.github);
@@ -31,7 +31,7 @@ bio.display = function(bio_obj, skills_obj){
 		$("#header").append(HTMLskillsStart);
 	};
 
-	for (skill=0,x=skills_obj.length;skill<x;skill++){
+	for (skill=0,x=skills_obj.length;skill<x;skill++) {
 			var formskills = HTMLskills.replace("%data%", bio_obj.skills[skill]);
 			$("#skills").append(formskills);
 			formskills = HTMLskills.replace("%data%", bio_obj.skills[skill]);
@@ -50,3 +50,52 @@ function inName() {
 	intname = newname.join(" ");
 	return intname;
 };
+
+var education = {
+	"schools" : [
+	{
+		"name" : "High School",
+		"location" : "Calgary, AB",
+		"degree" : "High School Diploma",
+		"majors" : [],
+		"dates" : "2010 - 2013",
+		"url" : "https://www.website.com"
+	}],
+	"onlineCourses" : [
+	{
+		"title" : "Front-End Web Developer",
+		"school" : "Udacity",
+		"dates" : "August, 2016 - Current",
+		"url" : "https://www.udacity.com"
+	}]
+};
+
+education.display = function (education_obj) {
+
+	$("#education").append(HTMLschoolStart);
+
+	for (edu=0,x=education_obj.schools.length;edu<x;edu++) {
+		var schoolName = HTMLschoolName.replace("%data%", education_obj.schools[0].name);
+		var schoolLocation = HTMLschoolLocation.replace("%data%", education_obj.schools[0].location);
+		var schoolDegree = HTMLschoolDegree.replace("%data%", education_obj.schools[0].degree);
+		var schoolDates = HTMLschoolDates.replace("%data%", education_obj.schools[0].dates);
+		var schoolUrl = HTMLonlineURL.replace("%data%", education_obj.schools[0].url);
+		var schoolForm = schoolLocation + schoolDegree + schoolDates + schoolUrl;
+
+		$(".education-entry:last").append(schoolName).append(schoolForm);
+	};
+
+	$("#education").append(HTMLonlineStart);
+
+	for (edu=0,x=education_obj.onlineCourses.length;edu<x;edu++) {
+		var onlineSchool = HTMLonlineTitle.replace("%data%", education_obj.onlineCourses[0].school);
+		var onlineTitle = HTMLonlineSchool.replace("%data%", education_obj.onlineCourses[0].title);
+		var onlineDates = HTMLonlineDates.replace("%data%", education_obj.onlineCourses[0].dates);
+		var onlineUrl = HTMLonlineURL.replace("%data%", education_obj.onlineCourses[0].url);
+		var onlineForm = onlineTitle + onlineDates + onlineUrl;
+
+		$(".onlineEd-entry:last").append(onlineSchool).append(onlineForm);
+	}
+};
+
+education.display(education);
