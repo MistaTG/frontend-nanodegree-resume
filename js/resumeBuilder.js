@@ -9,7 +9,7 @@ var bio = {
 	},
 	"welcomeMessage" : "Hello World",
 	"skills" : ["Programming", "Forward Thinking", "Team Oriented", "Problem Solver"],
-	"propic" : "images/fry.jpg"
+	"biopic" : "images/fry.jpg"
 };
 
 bio.display = function(bio_obj, skills_obj) {
@@ -22,19 +22,20 @@ bio.display = function(bio_obj, skills_obj) {
 		var formattedName = HTMLheaderName.replace("%data%", bio_obj.name);
 		var formattedRole = HTMLheaderRole.replace("%data%", bio_obj.role);
 		var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio_obj.welcomeMessage);
-		var formattedProPic = HTMLbioPic.replace("%data%", bio_obj.propic);
+		var formattedProPic = HTMLbioPic.replace("%data%", bio_obj.biopic);
 		var bioForm = formattedName + formattedRole + formattedWelcomeMsg + formattedProPic;
 		var contactForm = formattedMobile + formattedEmail + formattedLoc + formattedGit;
 
 		$("#header").append(bioForm);
 		$("#topContacts").append(contactForm);
-		$("#header").append(HTMLskillsStart);
+		$("#footerContacts").append(contactForm);
+		$("#header").append(HTMLskillsStart)
 	};
 
 	for (skill=0,x=skills_obj.length;skill<x;skill++) {
 			var formskills = HTMLskills.replace("%data%", bio_obj.skills[skill]);
 			$("#skills").append(formskills);
-			formskills = HTMLskills.replace("%data%", bio_obj.skills[skill]);
+			formskills = HTMLskills.replace("%data%", bio_obj.skills[skill])
 		};
 };
 
@@ -48,7 +49,7 @@ function inName() {
 	newname[1] = newname[1].toUpperCase();
 	newname[0] = newname[0].slice(0,1).toUpperCase() + newname[0].slice(1).toLowerCase();
 	intname = newname.join(" ");
-	return intname;
+	return intname
 };
 
 var education = {
@@ -57,7 +58,7 @@ var education = {
 		"name" : "High School",
 		"location" : "Calgary, AB",
 		"degree" : "High School Diploma",
-		"majors" : [],
+		"majors" : ["major1", "major2"],
 		"dates" : "2010 - 2013",
 		"url" : "https://www.website.com"
 	}],
@@ -78,11 +79,12 @@ education.display = function (education_obj) {
 		var schoolName = HTMLschoolName.replace("%data%", education_obj.schools[0].name);
 		var schoolLocation = HTMLschoolLocation.replace("%data%", education_obj.schools[0].location);
 		var schoolDegree = HTMLschoolDegree.replace("%data%", education_obj.schools[0].degree);
+		var schoolMajor = HTMLschoolMajor.replace("%data%", education_obj.schools[0].majors[0]);		
 		var schoolDates = HTMLschoolDates.replace("%data%", education_obj.schools[0].dates);
 		var schoolUrl = HTMLonlineURL.replace("%data%", education_obj.schools[0].url);
-		var schoolForm = schoolLocation + schoolDegree + schoolDates + schoolUrl;
+		var schoolForm = schoolMajor + schoolLocation + schoolDegree + schoolDates + schoolUrl;
 
-		$(".education-entry:last").append(schoolName).append(schoolForm);
+		$(".education-entry:last").append(schoolName).append(schoolForm)
 	};
 
 	$("#education").append(HTMLonlineStart);
@@ -94,7 +96,7 @@ education.display = function (education_obj) {
 		var onlineUrl = HTMLonlineURL.replace("%data%", education_obj.onlineCourses[0].url);
 		var onlineForm = onlineTitle + onlineDates + onlineUrl;
 
-		$(".onlineEd-entry:last").append(onlineSchool).append(onlineForm);
+		$(".onlineEd-entry:last").append(onlineSchool).append(onlineForm)
 	};
 };
 
@@ -123,49 +125,49 @@ work.display = function(work_obj) {
 		var workDescription = HTMLworkDescription.replace("%data%", work_obj.jobs[job].description);
 		var workForm = workEmployer + workTitle + workLocation + workDates + workDescription;
 
-		$(".work-entry:last").append(workForm);
+		$(".work-entry:last").append(workForm)
 	};
 };
 
 work.display(work);
 
-var projects = {
-	"project" : [ 
+var project = {
+	"projects" : [ 
 	{
 		"title" : "Mock up Site",
 		"dates" : "September 2016",
 		"description" : "A reactive and responsive mock up website",
-		"images" : "http://placehold.it/300x200"
+		"images" : ["http://placehold.it/300x200"]
 	},
 	{
 		"title" : "vacation home webssite",
 		"dates" : "TBD",
 		"description" : "A website that shows you the availability of condos",
-		"images" : ""
+		"images" : [""]
 	},
 	{
 		"title" : "Resume Website",
 		"dates" : "September 2016",
 		"description" : "An online resume built mostly with Javascript",
-		"images" : ""
+		"images" : [""]
 	} ]
-}
+};
 
-projects.display = function(projects_obj) {
+project.display = function(project_obj) {
 
 	$("#projects").append(HTMLprojectStart);
 
-	for (proj=0,x=projects_obj.project.length;proj<x;proj++) {
-		var projectTitle = HTMLprojectTitle.replace("%data%", projects_obj.project[proj].title);
-		var projectDates = HTMLprojectDates.replace("%data%", projects_obj.project[proj].dates);
-		var projectDescription = HTMLprojectDescription.replace("%data%", projects_obj.project[proj].description);
-		var projectImages = HTMLprojectImage.replace("%data%", projects_obj.project[proj].images);
+	for (proj=0,x=project_obj.projects.length;proj<x;proj++) {
+		var projectTitle = HTMLprojectTitle.replace("%data%", project_obj.projects[proj].title);
+		var projectDates = HTMLprojectDates.replace("%data%", project_obj.projects[proj].dates);
+		var projectDescription = HTMLprojectDescription.replace("%data%", project_obj.projects[proj].description);
+		var projectImages = HTMLprojectImage.replace("%data%", project_obj.projects[proj].images[0]);
 		var projectForm = projectTitle + projectDates + projectDescription + projectImages;
 
-		$(".project-entry:last").append(projectForm);
+		$(".project-entry:last").append(projectForm)
 	};
 };
 
-projects.display(projects);
+project.display(project);
 
 $("#mapDiv").append(googleMap);
