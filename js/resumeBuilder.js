@@ -35,7 +35,6 @@ bio.display = function(bio_obj, skills_obj) {
 	for (skill=0,x=skills_obj.length;skill<x;skill++) {
 			var formskills = HTMLskills.replace("%data%", bio_obj.skills[skill]);
 			$("#skills").append(formskills);
-			formskills = HTMLskills.replace("%data%", bio_obj.skills[skill])
 		};
 };
 
@@ -137,13 +136,13 @@ var project = {
 		"title" : "Mock up Site",
 		"dates" : "September 2016",
 		"description" : "A reactive and responsive mock up website",
-		"images" : ["http://placehold.it/300x200"]
+		"images" : ["http://placehold.it/300x200", "http://placehold.it/400x200"]
 	},
 	{
 		"title" : "vacation home webssite",
 		"dates" : "TBD",
 		"description" : "A website that shows you the availability of condos",
-		"images" : [""]
+		"images" : ["http://placehold.it/300x200"]
 	},
 	{
 		"title" : "Resume Website",
@@ -161,10 +160,15 @@ project.display = function(project_obj) {
 		var projectTitle = HTMLprojectTitle.replace("%data%", project_obj.projects[proj].title);
 		var projectDates = HTMLprojectDates.replace("%data%", project_obj.projects[proj].dates);
 		var projectDescription = HTMLprojectDescription.replace("%data%", project_obj.projects[proj].description);
-		var projectImages = HTMLprojectImage.replace("%data%", project_obj.projects[proj].images[0]);
-		var projectForm = projectTitle + projectDates + projectDescription + projectImages;
+		var projectForm = projectTitle + projectDates + projectDescription;
 
 		$(".project-entry:last").append(projectForm)
+		
+		for  (test=0,y=project_obj.projects[proj].images.length;test<y;test++) {
+			console.log(project_obj.projects[proj].images.length);
+			var projectImages = HTMLprojectImage.replace("%data%", project_obj.projects[proj].images[test]);
+			$(".project-entry:last").append(projectImages)
+		};
 	};
 };
 
